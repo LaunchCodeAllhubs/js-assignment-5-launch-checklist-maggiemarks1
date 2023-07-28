@@ -50,7 +50,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     else if (validateInput(copilot)=== "Is a Number"){
         window.alert ("Make sure to enter valid information for each field!")
     }else {
-        copilotStatus.innerHTML= `Co-Pilot ${copilot} is ready for launch`
+        copilotStatus.innerHTML= `Co-pilot ${copilot} is ready for launch`
       }
 //fuelLevel
 if (cargoLevel < 10000 && fuelLevel > 10000)
