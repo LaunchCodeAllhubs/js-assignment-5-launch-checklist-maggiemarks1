@@ -1,3 +1,5 @@
+const { computeHeadingLevel } = require('@testing-library/dom');
+
 // Write your helper functions here!
 require('isomorphic-fetch');
 
@@ -17,11 +19,73 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 
 function validateInput(testInput) {
-   
+    if (testInput === ""){return "Empty"
+       }
+    else if ( isNaN(testInput) === true){
+        return "Not a Number" }
+    else {
+        return "Is a Number"
+    } 
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+   //pilot
+    if (validateInput(pilot)=== "Empty"){
+        window.alert("All fields are required!")}
+    else if (validateInput(pilot)=== "Is a Number"){
+        window.alert ("Make sure to enter valid information for each field!")
+    }else {
+        pilotStatus.innerHTML= `Pilot ${pilot} Ready!`
+      }
+//copilot
+  if (validateInput(copilot)=== "Empty"){
+        window.alert("All fields are required!")}
+    else if (validateInput(copilot)=== "Is a Number"){
+        window.alert ("Make sure to enter valid information for each field!")
+    }else {
+        copilotStatus.innerHTML= `Co-Pilot ${copilot} Ready!`
+      }
+//fuelLevel
+    if (validateInput(fuelLevel)=== "Empty"){
+        window.alert("All fields are required!")}
+    else if (validateInput(fuelLevel)=== "Not a Number"){
+            window.alert ("Make sure to enter valid information for each field!")}
+    else if (fuelLevel< 10000){
+        fuelStatus.innerHTML= `Fuel Level too Low for launch`
+        list.style.visibility= "visible"
+        launchStatus.innerHTML = "Shuttle Not Ready for Launch"
+        launchStatus.style.color = "#C7254E";}
+    else {
+        fuelStatus.innerHTML = `Fuel level high enough for launch`
+       
+    }
+    
+    
+//cargolevel
+    if (validateInput(cargoLevel)=== "Empty"){
+        window.alert("All fields are required!")}
+    else if (validateInput(cargoLevel)=== "Not a Number"){
+            window.alert ("Make sure to enter valid information for each field!")}
+    else if (cargoLevel > 10000){
+        cargoStatus.innerHTML= `Cargo too heavy for launch`
+         list.style.visibility= "visible"
+         launchStatus.innerHTML = "Shuttle Not Ready for Launch"
+         launchStatus.style.color = "#C7254E";}
+     else{
+        cargoStatus.innerHTML = `Cargo mass low enough for launch`
+    }
+    if (cargoLevel < 10000 && fuelLevel> 10000)
+    {
+        launchStatus.innerHTML = "Shuttle Ready for Launch"
+        launchStatus.style.color = "#419F6A";
+    }
+
+    
+   console.log(pilot)
+   console.log(copilot)
+   console.log(fuelLevel)
+   console.log(cargoLevel)
+   event.preventDefault()
 }
 
 async function myFetch() {
