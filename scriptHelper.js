@@ -42,7 +42,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     else if (validateInput(pilot)=== "Is a Number"){
         window.alert ("Make sure to enter valid information for each field!")
     }else {
-        pilotStatus.innerHTML= `Pilot ${pilot} Ready!`
+        pilotStatus.innerHTML= `Pilot ${pilot} is ready for launch`
       }
 //copilot
   if (validateInput(copilot)=== "Empty"){
@@ -50,9 +50,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     else if (validateInput(copilot)=== "Is a Number"){
         window.alert ("Make sure to enter valid information for each field!")
     }else {
-        copilotStatus.innerHTML= `Co-Pilot ${copilot} Ready!`
+        copilotStatus.innerHTML= `Co-Pilot ${copilot} is ready for launch`
       }
 //fuelLevel
+if (cargoLevel < 10000 && fuelLevel > 10000)
+{
+    launchStatus.innerHTML = "Shuttle Ready for Launch"
+    launchStatus.style.color = "#419F6A";
+}
     if (validateInput(fuelLevel)=== "Empty"){
         window.alert("All fields are required!")}
     else if (validateInput(fuelLevel)=== "Not a Number"){
@@ -81,11 +86,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
      else{
         cargoStatus.innerHTML = `Cargo mass low enough for launch`
     }
-    if (cargoLevel < 10000 && fuelLevel> 10000)
-    {
-        launchStatus.innerHTML = "Shuttle Ready for Launch"
-        launchStatus.style.color = "#419F6A";
-    }
+   
 
     
    console.log(pilot)
