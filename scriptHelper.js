@@ -1,21 +1,23 @@
-const { computeHeadingLevel } = require('@testing-library/dom');
+
 
 // Write your helper functions here!
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    // Here is the HTML formatting for our mission target div.
-   /*
+   const missionTarget = document.getElementById("missionTarget")
+   missionTarget.innerHTML =
+   `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
+                    <li>Name:${name} </li>
+                    <li>Diameter:${diameter}</li>
                     <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Distance from Earth:${distance}</li>
+                    <li>Number of Moons: ${moons} </li>
                 </ol>
-                <img src="">
-   */
+                <img src= ${imageUrl}>
+   `
 }
 
 function validateInput(testInput) {
@@ -85,19 +87,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    console.log(copilot)
    console.log(fuelLevel)
    console.log(cargoLevel)
-   event.preventDefault()
 }
 
 async function myFetch() {
-    let planetsReturned;
-
-    planetsReturned = await fetch().then( function(response) {
-        });
-
-    return planetsReturned;
-}
+    let response = await fetch('https://handlers.education.launchcode.org/static/planets.json', {
+        headers: {
+            Accept: 'application/json',}
+        })  ;
+    let data= await response.json();
+    
+    return data;   
+};
 
 function pickPlanet(planets) {
+    let randomNumber = Math.floor(Math.random()*planets.length)
+    return planets[randomNumber]
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
