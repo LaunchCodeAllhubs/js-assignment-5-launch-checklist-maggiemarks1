@@ -16,7 +16,7 @@ form.addEventListener("submit",function(){
     let cargoLevel = cargoMass.value
     let list = document.getElementById("faultyItems")
 formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel)
-event.preventDefault()})
+event.preventDefault()});
 
 
 

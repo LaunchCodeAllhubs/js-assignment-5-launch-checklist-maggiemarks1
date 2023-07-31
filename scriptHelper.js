@@ -32,11 +32,7 @@ function validateInput(testInput) {
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
    //pilot
-   const pilotStatus = document.getElementById("pilotStatus");
-    const copilotStatus = document.getElementById("copilotStatus");
-    const fuelStatus = document.getElementById("fuelStatus");
-    const cargoStatus = document.getElementById("cargoStatus");
-    const launchStatus =document.getElementById("launchStatus");
+   
     if (validateInput(pilot)=== "Empty"){
         window.alert("All fields are required!")}
     else if (validateInput(pilot)=== "Is a Number"){
@@ -104,6 +100,7 @@ async function myFetch() {
     
     return data;   
 };
+
 
 function pickPlanet(planets) {
     let randomNumber = Math.floor(Math.random()*planets.length)
