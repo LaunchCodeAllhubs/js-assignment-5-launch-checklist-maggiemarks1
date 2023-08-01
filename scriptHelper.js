@@ -70,7 +70,7 @@ if (cargoLevel <= 10000 && fuelLevel >= 10000)
     //     window.alert("All fields are required!")}
     // else if (validateInput(fuelLevel)=== "Not a Number"){
     //         window.alert ("Make sure to enter valid information for each field!")}
-    else if (fuelLevel< 10000){
+    if (fuelLevel< 10000){
         fuelStatus.innerHTML= `Fuel level too low for launch`
         list.style.visibility= "visible"
         launchStatus.innerHTML = "Shuttle Not Ready for Launch"
