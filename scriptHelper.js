@@ -37,31 +37,39 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     const fuelStatus = document.getElementById("fuelStatus");
     const cargoStatus = document.getElementById("cargoStatus");
     const launchStatus =document.getElementById("launchStatus");
-    if (validateInput(pilot)=== "Empty"){
-        window.alert("All fields are required!")}
-    else if (validateInput(pilot)=== "Is a Number"){
+    if(validateInput(pilot)==="Empty"|| validateInput(copilot)==="Empty"||validateInput(cargoLevel)==="Empty"||validateInput(fuelLevel)==="Empty"){
+        window.alert("All fields are required!")
+    }
+    else if (validateInput(pilot)=== "Is a Number"||validateInput(copilot)=== "Is a Number"||validateInput(cargoLevel)=== "Not a Number"||validateInput(fuelLevel)=== "Not a Number"){
         window.alert ("Make sure to enter valid information for each field!")
-    }else {
+    }
+    else {
+        list.style.visibility= "visible"
+//    // if (validateInput(pilot)=== "Empty"){
+//       //  window.alert("All fields are required!")}
+//    // else if (validateInput(pilot)=== "Is a Number"){
+//         window.alert ("Make sure to enter valid information for each field!")
+//     }else {
         pilotStatus.innerHTML= `Pilot ${pilot} is ready for launch`
-      }
+     // }
 //copilot
-  if (validateInput(copilot)=== "Empty"){
-        window.alert("All fields are required!")}
-    else if (validateInput(copilot)=== "Is a Number"){
-        window.alert ("Make sure to enter valid information for each field!")
-    }else {
+//   if (validateInput(copilot)=== "Empty"){
+//         window.alert("All fields are required!")}
+//     else if (validateInput(copilot)=== "Is a Number"){
+//         window.alert ("Make sure to enter valid information for each field!")
+//     }else {
         copilotStatus.innerHTML= `Co-pilot ${copilot} is ready for launch`
-      }
+    //  }
 //fuelLevel
 if (cargoLevel <= 10000 && fuelLevel >= 10000)
 {
     launchStatus.innerHTML = "Shuttle is Ready for Launch"
     launchStatus.style.color = "#419F6A";
 }
-    if (validateInput(fuelLevel)=== "Empty"){
-        window.alert("All fields are required!")}
-    else if (validateInput(fuelLevel)=== "Not a Number"){
-            window.alert ("Make sure to enter valid information for each field!")}
+    // if (validateInput(fuelLevel)=== "Empty"){
+    //     window.alert("All fields are required!")}
+    // else if (validateInput(fuelLevel)=== "Not a Number"){
+    //         window.alert ("Make sure to enter valid information for each field!")}
     else if (fuelLevel< 10000){
         fuelStatus.innerHTML= `Fuel level too low for launch`
         list.style.visibility= "visible"
@@ -74,11 +82,11 @@ if (cargoLevel <= 10000 && fuelLevel >= 10000)
     
     
 //cargolevel
-    if (validateInput(cargoLevel)=== "Empty"){
-        window.alert("All fields are required!")}
-    else if (validateInput(cargoLevel)=== "Not a Number"){
-            window.alert ("Make sure to enter valid information for each field!")}
-    else if (cargoLevel > 10000){
+    // if (validateInput(cargoLevel)=== "Empty"){
+    //     window.alert("All fields are required!")}
+    // else if (validateInput(cargoLevel)=== "Not a Number"){
+         //   window.alert ("Make sure to enter valid information for each field!")}
+     if (cargoLevel > 10000){
         cargoStatus.innerHTML= `Cargo mass too heavy for launch`
          list.style.visibility= "visible"
          launchStatus.innerHTML = "Shuttle Not Ready for Launch"
@@ -93,7 +101,7 @@ if (cargoLevel <= 10000 && fuelLevel >= 10000)
    console.log(copilot)
    console.log(fuelLevel)
    console.log(cargoLevel)
-}
+}}
 
 async function myFetch() {
     let response = await fetch('https://handlers.education.launchcode.org/static/planets.json', {

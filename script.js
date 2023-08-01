@@ -32,6 +32,7 @@ event.preventDefault()});
        console.log(listedPlanets);
    }).then(function () {
        console.log(listedPlanets);
+       let pickedPlanet = pickPlanet(listedPlanets)
        
        let name = pickedPlanet.name
        let diameter = pickedPlanet.diameter
